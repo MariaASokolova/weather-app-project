@@ -15,15 +15,9 @@ h1 {
 }
 
 img {
-  width: 100px;
-}
-.application {
-  display: block;
-  margin: 30px auto;
-  max-width: 600px;
-  padding: 20px;
-  border: 1px solid #dadde1;
-  border-radius: 15px;
+  margin-right: 5px;
+  height: 64px;
+  width: 64px;
 }
 
 ul {
@@ -35,4 +29,35 @@ li {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.app-wrapper {
+  display: block;
+  margin: 30px auto;
+  max-width: 600px;
+}
+.application {
+  display: block;
+
+  padding: 20px;
+  border: 1px solid #dadde1;
+  border-radius: 15px;
+}
+
+.overview {
+  margin-bottom: 20px;
+}
+
+.weather-img img {
+  margin-right: 20px;
+}
+
+.temp-val {
+  font-size: 32px;
+}
+
+.units {
+  position: relative;
+  font-size: 16px;
+  top: -12px;
 }
