@@ -42,8 +42,17 @@ function showTemp(response) {
   );
   icon.setAttribute("alt", response.data.weather[0].description);
 }
-let city = "Moscow";
-let apiKey = "15132c0c33ce6e6df2635ad5416e41db";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-axios.get(apiUrl).then(showTemp);
+function search(city) {
+  let apiKey = "15132c0c33ce6e6df2635ad5416e41db";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemp);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-input");
+  search(cityInput.value);
+}
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
