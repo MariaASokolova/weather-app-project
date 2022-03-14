@@ -35,9 +35,15 @@ function showTemp(response) {
   windVal.innerHTML = Math.round(response.data.wind.speed);
   let dayTime = document.querySelector("#day-time");
   dayTime.innerHTML = formatDate(response.data.dt * 1000);
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
-
+let city = "Moscow";
 let apiKey = "15132c0c33ce6e6df2635ad5416e41db";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=${apiKey}&units=metric`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(showTemp);
