@@ -29,6 +29,7 @@ li {
   list-style: none;
   margin: 0;
   padding: 0;
+  text-transform: capitalize;
 }
 
 .app-wrapper {
@@ -50,9 +51,11 @@ li {
 
 .weather-img img {
   margin-right: 20px;
+  margin-bottom: 30px;
 }
 
 .temp-val {
+  margin-top: 30px;
   font-size: 32px;
 }
 

@@ -12,6 +12,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
@@ -19,10 +20,10 @@
       <div class="app-wrapper">
         <div class="application">
           <div class="overview">
-            <h1>Moscow</h1>
+            <h1 id="city-name">Moscow</h1>
             <ul>
-              <li>Thursday 21:00</li>
-              <li>Sunny</li>
+              <li id="day-time">Thursday 21:00</li>
+              <li id="weather-descr">Sunny</li>
             </ul>
           </div>
 
@@ -35,16 +36,15 @@
                   class="float-left"
                 />
                 <div class="float-left">
-                  <span class="temp-val">2</span
+                  <span id="temp-val">2</span
                   ><span class="units">C° | <a href="#">°F</a></span>
                 </div>
               </div>
             </div>
             <div class="col-md-6">
               <ul>
-                <li>Precipitation 0%</li>
-                <li>Humidity 70%</li>
-                <li>Wind 2m/s</li>
+                <li>Humidity <span id="hum-val"></span>%</li>
+                <li>Wind <span id="wind-val"></span>m/s</li>
               </ul>
             </div>
           </div>
