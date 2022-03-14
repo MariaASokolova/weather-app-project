@@ -27,6 +27,7 @@ function showTemp(response) {
   cityVal.innerHTML = response.data.name;
   let tempVal = document.querySelector("#temp-val");
   tempVal.innerHTML = Math.round(response.data.main.temp);
+  celTemp = Math.round(response.data.main.temp);
   let weatherDescr = document.querySelector("#weather-descr");
   weatherDescr.innerHTML = response.data.weather[0].description;
   let humVal = document.querySelector("#hum-val");
@@ -54,5 +55,31 @@ function handleSubmit(event) {
   let cityInput = document.querySelector("#city-input");
   search(cityInput.value);
 }
+
+function showFarh(event) {
+  event.preventDefault();
+  celc.classList.remove("active");
+  farh.classList.add("active");
+  let farhVal = (celTemp * 9) / 5 + 32;
+  let tempVal = document.querySelector("#temp-val");
+  tempVal.innerHTML = Math.round(farhVal);
+}
+
+function showCelc(event) {
+  event.preventDefault();
+  celc.classList.add("active");
+  farh.classList.remove("active");
+  let tempVal = document.querySelector("#temp-val");
+  tempVal.innerHTML = celTemp;
+}
+
+let celTemp = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let farh = document.querySelector("#Farh");
+farh.addEventListener("click", showFarh);
+
+let celc = document.querySelector("#Celc");
+celc.addEventListener("click", showCelc);

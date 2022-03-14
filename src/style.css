@@ -66,3 +66,12 @@ li::first-letter {
   font-size: 16px;
   top: -12px;
 }
+
+.units .active {
+  color: black;
+  cursor: default;
+}
+
+.units .active:hover {
+  text-decoration: none;
+}
