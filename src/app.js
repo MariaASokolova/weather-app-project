@@ -73,6 +73,34 @@ function showCelc(event) {
   tempVal.innerHTML = celTemp;
 }
 
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class = "row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+            <div class="col-2">
+              <div class="day-for">${day}</div>
+              <div class="icon-for">
+                <img
+                  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngitem.com%2Fpimgs%2Fm%2F225-2257250_cloud-cute-clipart-transparent-png-clip-art-cute.png&f=1&nofb=1"
+                  alt=""
+                />
+              </div>
+              <div class="weather-for">12° 15°</div>
+            </div>
+          
+          
+
+        `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let celTemp = null;
 
 let form = document.querySelector("#search-form");
@@ -83,3 +111,5 @@ farh.addEventListener("click", showFarh);
 
 let celc = document.querySelector("#Celc");
 celc.addEventListener("click", showCelc);
+
+showForecast();
