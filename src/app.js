@@ -42,6 +42,8 @@ function showTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -73,32 +75,52 @@ function showCelc(event) {
   tempVal.innerHTML = celTemp;
 }
 
-function showForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function showForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class = "row">`;
-  let days = ["Sun", "Mon", "Tue", "Wed"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
             <div class="col-2">
-              <div class="day-for">${day}</div>
+              <div class="day-for">${formatDay(forecastDay.dt)}</div>
               <div class="icon-for">
                 <img
-                  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngitem.com%2Fpimgs%2Fm%2F225-2257250_cloud-cute-clipart-transparent-png-clip-art-cute.png&f=1&nofb=1"
+                  src="http://openweathermap.org/img/wn/${
+                    forecastDay.weather[0].icon
+                  }@2x.png"
                   alt=""
                 />
               </div>
-              <div class="weather-for">12° 15°</div>
+              <div class="weather-for">${Math.round(
+                forecastDay.temp.min
+              )}° ${Math.round(forecastDay.temp.max)}°</div>
             </div>
           
           
 
         `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "15132c0c33ce6e6df2635ad5416e41db";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
 }
 
 let celTemp = null;
@@ -111,5 +133,3 @@ farh.addEventListener("click", showFarh);
 
 let celc = document.querySelector("#Celc");
 celc.addEventListener("click", showCelc);
-
-showForecast();
