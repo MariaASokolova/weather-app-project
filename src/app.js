@@ -128,8 +128,8 @@ let celTemp = null;
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-let farh = document.querySelector("#Farh");
-farh.addEventListener("click", showFarh);
+// let farh = document.querySelector("#Farh");
+// farh.addEventListener("click", showFarh);
 
-let celc = document.querySelector("#Celc");
-celc.addEventListener("click", showCelc);
+// let celc = document.querySelector("#Celc");
+// celc.addEventListener("click", showCelc);
